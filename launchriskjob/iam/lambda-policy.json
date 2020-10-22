@@ -1,0 +1,30 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "Stmt1603373822945",
+      "Action": [
+        "dynamodb:GetItem",
+        "dynamodb:PutItem",
+        "dynamodb:Scan"
+      ],
+      "Effect": "Allow",
+      "Resource": "*"
+    },
+    {
+      "Sid": "Stmt1603373870119",
+      "Action": [
+        "events:DisableRule",
+        "events:EnableRule"
+      ],
+      "Effect": "Allow",
+      "Resource": "*"
+    },
+    {
+      "Sid": "Stmt1603373947550",
+      "Action": "glue:*",
+      "Effect": "Allow",
+      "Resource": "*"
+    }
+  ]
+}
