@@ -25,6 +25,18 @@
       "Action": "glue:*",
       "Effect": "Allow",
       "Resource": "*"
+    },
+    {
+      "Sid": "Stmt1603463550102",
+      "Action": "logs:*",
+      "Effect": "Allow",
+      "Resource": "*"
+    },
+    {
+      "Sid": "Stmt1603463557990",
+      "Action": "cloudwatch:*",
+      "Effect": "Allow",
+      "Resource": "*"
     }
   ]
 }

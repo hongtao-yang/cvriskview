@@ -1,0 +1,38 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Sid": "Stmt1603373822945",
+        "Action": [
+          "dynamodb:GetItem",
+          "dynamodb:PutItem",
+          "dynamodb:Scan"
+        ],
+        "Effect": "Allow",
+        "Resource": "*"
+      },
+      {
+        "Sid": "Stmt1603379828910",
+        "Action": [
+          "dynamodb:DeleteItem"
+        ],
+        "Effect": "Allow",
+        "Resource": "*"
+      },
+      {
+        "Sid": "Stmt1603380058720",
+        "Action": [
+          "s3:GetObject",
+          "s3:ListBucket"
+        ],
+        "Effect": "Allow",
+        "Resource": "*"
+      },
+      {
+        "Sid": "Stmt1603380138877",
+        "Action": "athena:*",
+        "Effect": "Allow",
+        "Resource": "*"
+      }
+    ]
+  }

@@ -1,0 +1,6 @@
+
+launchriskjob/terraform.tfstate
+launchriskjob/.terraform/plugins/registry.terraform.io/hashicorp/archive/2.0.0/windows_amd64/terraform-provider-archive_v2.0.0_x5.exe
+launchriskjob/.terraform/plugins/registry.terraform.io/hashicorp/aws/3.11.0/windows_amd64/terraform-provider-aws_v3.11.0_x5.exe
+launchriskjob/output/riskviewlambda.zip
+launchriskjob/terraform.tfstate.backup
