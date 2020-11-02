@@ -2,7 +2,7 @@
 locals{
     lambda_zip_location = "output/riskviewlambda.zip"
     DM_RISK_QUEUE_TABLE_NAME = "cvriskqueue"
-    DM_RISK_TABLE_NAME = "cvrisk"
+    DM_RISK_TABLE_NAME = "cvriskresult"
     RISK_GLUE_JOB_NAME = "convertcv2risk"
     RISK_TIMER_EVENT_NAME = "scheduled_launch_cvriskjob"
     S3_XFILESBUCKET = "raytestlambda"
@@ -17,7 +17,7 @@ data "archive_file" "risk_lambda_function" {
 resource "aws_lambda_function" "risk_lambda_function" {
   filename      = local.lambda_zip_location
   function_name = "risk_lambda_function"
-  role          = aws_iam_role.lambda_role.arn
+  role          = aws_iam_role.cvrisk_launcher_policy_role.arn
   handler       = "lambda_function.lambda_handler"
 
   # The filebase64sha256() function is available in Terraform 0.11.12 and later

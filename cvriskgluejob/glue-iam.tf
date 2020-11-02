@@ -1,12 +1,12 @@
-resource "aws_iam_role_policy" "glue_policy" {
-  name = "glue_policy"
-  role = aws_iam_role.glue_role.id
+resource "aws_iam_role_policy" "cvrisk_glue_policy" {
+  name = "cvrisk_glue_policy"
+  role = aws_iam_role.cvrisk_glue_role.id
 
   policy = file("iam/glue-policy.json")
 }
 
-resource "aws_iam_role" "glue_role" {
-  name = "glue_role"
+resource "aws_iam_role" "cvrisk_glue_role" {
+  name = "cvrisk_glue_role"
 
   assume_role_policy = file("iam/glue-role-policy.json")
 }
