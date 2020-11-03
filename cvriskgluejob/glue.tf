@@ -1,16 +1,10 @@
 
-variable S3_XFILESBUCKET{
-    type = string
-    default = "raytestlambda"
-}
-locals{
-
-    risk_job_name = "cvriskgluejob"
-    RISK_SCRIPT_LOCATION= "s3://${var.S3_XFILESBUCKET}/risk/glue/gluescript.py"
+locals{    
+    RISK_SCRIPT_LOCATION= "s3://${var.s3_bucket_name}/risk/glue/gluescript.py"
 }  
 
 resource "aws_glue_job" "etl" {
-  name     = local.risk_job_name
+  name     = var.risk_job_name
   role_arn = aws_iam_role.cvrisk_glue_role.arn
 
   command {
@@ -19,14 +13,14 @@ resource "aws_glue_job" "etl" {
 
   default_arguments = {
     "--job-language"    = "python"
-    "--risktable"       = "cvriskresult"
+    "--risktable"       = var.DM_RISK_TABLE_NAME
     "--convertBucket "  = "True"
-    "--bucket"          = "raytestlambda"
+    "--bucket"          = var.s3_bucket_name
   }
 }
 
 resource "aws_dynamodb_table" "cvriskresult" {
-  name             = "cvriskresult"
+  name             = var.DM_RISK_TABLE_NAME
   hash_key         = "s3url"
   billing_mode     = "PAY_PER_REQUEST"
   stream_enabled   = true
@@ -39,7 +33,7 @@ resource "aws_dynamodb_table" "cvriskresult" {
 }
 
 resource "aws_dynamodb_table" "cvriskqueue" {
-  name             = "cvriskqueue"
+  name             = var.DM_RISK_QUEUE_TABLE_NAME
   hash_key         = "id"
   billing_mode     = "PAY_PER_REQUEST"
   stream_enabled   = true
